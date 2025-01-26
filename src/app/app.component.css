@@ -1,0 +1,88 @@
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .botones {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  .historial {
+    margin-top: 20px;
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+  }
+  
+  .lista-historial {
+    margin: 20px 0;
+  }
+  
+  .item-historial {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .suma-total {
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  
+  .backup-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .import-button {
+    background-color: #008CBA;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+  }
+  
+  .import-button:hover {
+    background-color: #007399;
+  }
+  
+  .ultimo-numero {
+    margin: 15px 0;
+    color: #2c3e50;
+    font-weight: bold;
+  }
+
+  .warning-message {
+    color: #dc3545;
+    background-color: #f8d7da;
+    padding: 15px;
+    border-radius: 4px;
+    margin: 15px 0;
+    border: 1px solid #f5c6cb;
+  }
+  
+  button.danger {
+    background-color: #dc3545;
+  }
+  
+  button.danger:hover {
+    background-color: #c82333;
+  }
