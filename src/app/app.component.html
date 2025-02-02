@@ -1,42 +1,69 @@
+<!-- app.component.html -->
 <div class="container">
-  <h1>Generador de Números Pares</h1>
+  <h1 class="title">Generador de Números Pares 🔢</h1>
 
-   <!-- Mensaje de números agotados -->
-   <div *ngIf="allNumbersUsed" class="warning-message">
-    ¡Todos los números han sido generados! Usa el botón "Limpiar Todo" para reiniciar.
+  <div *ngIf="allNumbersUsed" class="warning-message">
+    ⚠️ ¡Todos los números han sido generados! Usa el botón "Limpiar Todo" para reiniciar.
   </div>
-  
+
   <div class="botones">
-    <button (click)="generarNumero()">Generar Número Par</button>
-    <button (click)="toggleHistorial()">
+    <button class="btn-generar" (click)="generarNumero()">
+      <span class="icon">✨</span> Generar número
+    </button>
+    <button class="btn-toggle" (click)="toggleHistorial()">
+      <span class="icon">{{ mostrarHistorial ? '👁️' : '📜' }}</span> 
       {{ mostrarHistorial ? 'Ocultar' : 'Mostrar' }} Historial
     </button>
-    <button class="danger" (click)="limpiarTodo()">Limpiar Todo</button>
+    <button class="btn-danger" (click)="limpiarTodo()">
+      <span class="icon">🧹</span> Limpiar
+    </button>
+    <button class="btn-manual" (click)="mostrarManual = true">
+      <span class="icon">📖</span> Manual
+    </button>
   </div>
 
   <div *ngIf="ultimoNumero !== null" class="ultimo-numero">
-    Último número generado: {{ ultimoNumero }}
+    🎉 Último número generado: <span class="numero">{{ ultimoNumero }}</span>
   </div>
 
+  <!-- Manual Modal -->
+  <div *ngIf="mostrarManual" class="manual-modal">
+    <div class="modal-content">
+      <span class="close" (click)="mostrarManual = false">&times;</span>
+      <h2>📚 Manual de Uso</h2>
+      <div class="manual-text">
+        <p>1. Click en "Generar Número Par" para crear nuevos números</p>
+        <p>2. Usa "Mostrar/Ocultar Historial" para ver el registro</p>
+        <p>3. "Limpiar Todo" reinicia la aplicación</p>
+        <p>4. Exporta/Importa tu historial con los botones correspondientes</p>
+        <p>5. Los números se generan entre 0 y 100</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- HISTORIAL -->
   <div *ngIf="mostrarHistorial" class="historial">
-    <h2>Historial</h2>
+    <h2>📋 Historial</h2>
     <div class="backup-buttons">
-      <button (click)="exportarBackup()">Exportar Backup</button>
-      <label class="import-button">
-        Importar Backup
-        <input type="file" hidden (change)="importarBackup($event)">
-      </label>
+      <button class="btn-exportar" (click)="exportarBackup()">
+        <span class="icon">📤</span> Exportar
+      </button>
+      <button class="btn-importar" (click)="fileInput.click()">
+        <span class="icon">📥</span> Importar
+      </button>
+      <input #fileInput type="file" hidden (change)="importarBackup($event)">
+      
     </div>
     
     <div class="lista-historial">
       <div *ngFor="let item of historial" class="item-historial">
-        <span>Número: {{ item.numero }}</span>
-        <span>Fecha: {{ item.fecha | date:'medium' }}</span>
+        <span>Número: {{ item.numero }} </span>
+        <span>Fecha: {{ item.fecha | date:'dd/MM/yyyy HH:mm:ss' }}</span>
       </div>
     </div>
     
     <div class="suma-total">
-      Suma total: {{ sumaTotal }}
+      🧮 Suma total: {{ sumaTotal }}
     </div>
   </div>
 </div>
