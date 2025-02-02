@@ -12,6 +12,8 @@ export class AppComponent {
   mostrarHistorial = false;
   allNumbersUsed = false; // Controla si se han agotado los números
 
+  mostrarManual = false; // Añadir esta nueva propiedad
+
   constructor(private numerosService: NumerosService) { }
 
   generarNumero(): void {
