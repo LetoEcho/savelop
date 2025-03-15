@@ -149,6 +149,31 @@ button:hover {
 }
 
 /* Mejoras adicionales al historial */
+
+/* Contenedor del historial */
+.historial {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 300px); /* Ajusta según tu layout */
+  max-height: 80vh; /* Límite máximo */
+}
+
+/* Lista de items con scroll */
+.lista-historial {
+  overflow-y: auto; /* Scroll vertical cuando sea necesario */
+  flex-grow: 1; /* Ocupa el espacio disponible */
+  margin: 15px 0;
+  padding-right: 10px; /* Evita que el scroll tape contenido */
+}
+
+/* Para pantallas pequeñas ajustar altura */
+@media (max-height: 800px) {
+  .historial {
+    height: 60vh;
+  }
+}
+
 .item-historial {
   display: flex;
   justify-content: space-between;
