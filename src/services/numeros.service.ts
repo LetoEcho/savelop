@@ -32,7 +32,12 @@ export class NumerosService {
   // Obtener historial desde localStorage
   getHistorial(): any[] {
     const historial = localStorage.getItem(this.historialKey);
-    return historial ? JSON.parse(historial) : [];
+    const parsedHistorial = historial ? JSON.parse(historial) : [];
+
+    // Ordenar por fecha (más reciente primero)
+    return parsedHistorial.sort((a: any, b: any) => {
+      return new Date(b.fecha).getTime() - new Date(a.fecha).getTime();
+    });
   }
 
   // Guardar nuevo número en el historial
