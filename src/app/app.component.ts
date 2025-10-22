@@ -7,14 +7,23 @@ import { NumerosService } from 'src/services/numeros.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   ultimoNumero: number | null = null;
   mostrarHistorial = false;
   allNumbersUsed = false; // Controla si se han agotado los números
+  numerosUsados = this.numerosService.numerosMarcados; // Conjunto de números ya generados
 
-  mostrarManual = false; // Añadir esta nueva propiedad
+  mostrarManual = false; // Manual de uso
+  mostrarTabla = false; // Tabla de números usados 
 
-  constructor(private numerosService: NumerosService) { }
+  private readonly cols = 10;
+  rows: number[][] = [];
+  private selectedSet = this.numerosUsados;
+
+  constructor(private numerosService: NumerosService) {
+    this.rows = this.chunk(this.numerosService.posiblesNumeros, this.cols);
+   }
 
   generarNumero(): void {
     const nuevoNumero = this.numerosService.generarNumeroPar();
@@ -49,6 +58,21 @@ export class AppComponent {
 
   importarBackup(event: any): void {
     this.numerosService.importarBackup(event);
+  }
+
+  isSelected(n: number): boolean {
+    return this.selectedSet.has(n);
+  }
+
+  private chunk<T>(arr: T[], size: number): T[][] {
+    const out: T[][] = [];
+    for (let i = 0; i < arr.length; i += size) out.push(arr.slice(i, i + size));
+    return out;
+  }
+
+  refrescarNumeros(): void {
+    this.numerosUsados = this.numerosService.numerosMarcados;
+    this.selectedSet = this.numerosUsados;
   }
 
   // Getters para la vista

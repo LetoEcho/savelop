@@ -5,11 +5,14 @@ import { Injectable } from '@angular/core';
 })
 export class NumerosService {
   private historialKey = 'numeroHistorial';
-  private readonly posiblesNumeros: number[]; // Todos los números pares posibles
+  public readonly posiblesNumeros: number[]; // Todos los números pares posibles
+  public readonly numerosMarcados: any; // Números que ya han sido generados
 
   constructor() {
     // Generar array de números pares del 2 al 100
     this.posiblesNumeros = Array.from({ length: 50 }, (_, i) => (i + 1) * 2);
+    this.numerosMarcados = new Set(this.getHistorial().map((item) => item.numero));
+
   }
 
   // Generar número par único que no haya sido generado antes

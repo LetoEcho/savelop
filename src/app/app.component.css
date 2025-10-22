@@ -9,11 +9,12 @@
 
 .container {
   max-width: 1000px;
+  max-height: fit-content;
   margin: 30px auto;
   padding: 30px;
   background: white;
   border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
@@ -35,7 +36,8 @@
 
 button {
   padding: 12px 25px;
-  border: 2px solid rgba(0, 0, 0, 0.1); /* Contorno ligero */
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  /* Contorno ligero */
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
@@ -78,7 +80,7 @@ button:hover {
 
 
 button span.icon {
-  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.3));
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.3));
 }
 
 button:hover {
@@ -102,10 +104,11 @@ button:hover {
 
 .backup-buttons {
   display: flex;
-  gap: 10px; 
+  gap: 10px;
 }
 
-.btn-exportar, .btn-importar {
+.btn-exportar,
+.btn-importar {
   margin: 0;
   padding: 5px 10px;
 }
@@ -117,7 +120,7 @@ button:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -155,16 +158,22 @@ button:hover {
   margin-top: 20px;
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 300px); /* Ajusta según tu layout */
-  max-height: 80vh; /* Límite máximo */
+  height: calc(100vh - 300px);
+  /* Ajusta según tu layout */
+  max-height: 80vh;
+  /* Límite máximo */
 }
 
 /* Lista de items con scroll */
 .lista-historial {
-  overflow-y: auto; /* Scroll vertical cuando sea necesario */
-  flex-grow: 1; /* Ocupa el espacio disponible */
+  overflow-y: auto;
+  /* Scroll vertical cuando sea necesario */
+  flex-grow: 1;
+  /* Ocupa el espacio disponible */
   margin: 15px 0;
-  padding-right: 10px; /* Evita que el scroll tape contenido */
+  padding-right: 10px;
+  /* Evita que el scroll tape contenido */
+  max-height: fit-content;
 }
 
 /* Para pantallas pequeñas ajustar altura */
@@ -186,15 +195,17 @@ button:hover {
 }
 
 .item-historial span:last-child {
-  margin-left: auto; /* Empuja la fecha a la derecha */
+  margin-left: auto;
+  /* Empuja la fecha a la derecha */
   text-align: right;
-  color: #666; /* Color más tenue para diferenciar */
+  color: #666;
+  /* Color más tenue para diferenciar */
 }
 
 .item-historial:hover {
   transform: translateX(10px);
   background: white;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .suma-total {
@@ -214,4 +225,30 @@ button:hover {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.even-table {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 520px;
+  table-layout: fixed;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+td {
+  border: 1px solid #ddd;
+  padding: .6rem;
+  text-align: center;
+  transition: background-color .25s ease, color .25s ease, box-shadow .25s ease;
+}
+
+td.on {
+  background: #fcf0bd;
+  /* “iluminado” */
+  color: #000;
+  box-shadow: inset 0 0 0 2px #f59f00;
+  font-weight: 600;
 }

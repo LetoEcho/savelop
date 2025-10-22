@@ -7,12 +7,15 @@
   </div>
 
   <div class="botones">
-    <button class="btn-generar" (click)="generarNumero()">
+    <button class="btn-generar" (click)="generarNumero() ; ">
       <span class="icon">✨</span> Generar número
     </button>
-    <button class="btn-toggle" (click)="toggleHistorial()">
+    <button class="btn-toggle" (click)="toggleHistorial() ; mostrarTabla = false">
       <span class="icon">{{ mostrarHistorial ? '👁️' : '📜' }}</span> 
       {{ mostrarHistorial ? 'Ocultar' : 'Mostrar' }} Historial
+    </button>
+    <button class="btn-toggle" (click)="refrescarNumeros() ; mostrarTabla = !mostrarTabla ; mostrarHistorial = false">
+      <span class="icon">📋</span> Números usados
     </button>
     <button class="btn-danger" (click)="limpiarTodo()">
       <span class="icon">🧹</span> Limpiar
@@ -20,6 +23,7 @@
     <button class="btn-manual" (click)="mostrarManual = true">
       <span class="icon">📖</span> Manual
     </button>
+    
   </div>
 
   <div *ngIf="ultimoNumero !== null" class="ultimo-numero">
@@ -66,4 +70,19 @@
       🧮 Suma total: {{ sumaTotal }}
     </div>
   </div>
+
+  <!-- ESQUEMA DE NUMEROS ACTUAL -->
+   <div *ngIf = "mostrarTabla" class="tabla-numeros-modal">
+    <h2>📆 Números actuales</h2>
+    <table class="even-table">
+      <tbody>
+        <tr *ngFor="let row of rows">
+          <td *ngFor="let n of row" [ngClass]="{ 'on': isSelected(n) }">
+            {{ n }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+   </div>
 </div>
