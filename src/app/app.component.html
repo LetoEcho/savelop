@@ -60,9 +60,9 @@
     </div>
     
     <div class="lista-historial">
-      <div *ngFor="let item of historial" class="item-historial">
+      <div *ngFor="let item of historial; let i = index" class="item-historial">
         <span>Número: {{ item.numero }} </span>
-        <span>Fecha: {{ item.fecha | date:'dd/MM/yyyy HH:mm:ss' }}</span>
+        <span>Semana {{ historial.length - i }} · {{ item.fecha | date:'dd/MM/yyyy' }}</span>
       </div>
     </div>
     
@@ -72,8 +72,12 @@
   </div>
 
   <!-- ESQUEMA DE NUMEROS ACTUAL -->
-   <div *ngIf = "mostrarTabla" class="tabla-numeros-modal">
-    <h2>📆 Números actuales</h2>
+  <div *ngIf="mostrarTabla" class="tabla-numeros-modal">
+    <h2>📆 Números usados</h2>
+    <div class="tabla-stats">
+      <span class="stat usado">✔ {{ numerosUsados.size }} usados</span>
+      <span class="stat restante">⏳ {{ 50 - numerosUsados.size }} restantes</span>
+    </div>
     <table class="even-table">
       <tbody>
         <tr *ngFor="let row of rows">
@@ -83,6 +87,9 @@
         </tr>
       </tbody>
     </table>
-
-   </div>
+    <div class="tabla-leyenda">
+      <span class="leyenda-item"><span class="dot usado"></span> Usado</span>
+      <span class="leyenda-item"><span class="dot restante"></span> Disponible</span>
+    </div>
+  </div>
 </div>

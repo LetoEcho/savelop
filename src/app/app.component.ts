@@ -84,5 +84,4 @@ export class AppComponent {
     return this.numerosService.calcularSumaTotal();
   }
 
-  
 }
